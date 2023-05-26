@@ -1,0 +1,126 @@
+/* IMPORTING WEBFONTS */
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700,800,300');
+@import url('https://fonts.googleapis.com/css?family=Press+Start+2P');
+
+body {
+  background-image: url(../img/bg.png);
+  background-repeat: repeat;
+}
+
+input, label, .teacher-select h2 {
+	display: none;
+}
+
+#game-container {
+  position: relative;
+  width: 600px;
+  height: 500px;
+  background-image: url(../img/map.png);
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  margin: 0 auto;
+  margin-top: 20px;
+  cursor: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAZdEVYdFNvZnR3YXJlAFBhaW50Lk5FVCB2My41LjbQg61aAAAADUlEQVQYV2P4//8/IwAI/QL/+TZZdwAAAABJRU5ErkJggg=='),
+    url(images/blank.cur),
+    none !important;
+}
+
+.character {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+}
+
+.zombie {
+  background-color: transparent;
+  background-image: url(../img/ghost.png);
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.teacher {
+  background-color: transparent;
+  background-image: url(../img/teacher.png);
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.teacher-select {
+  text-align: center;
+}
+
+.teacher-select label {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 10px;
+  color: #fff;
+  text-shadow: 1px 1px 0 #555;
+}
+
+#money-display,
+#lives-display {
+  text-align: right;
+  margin-bottom: 12px;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 14px;
+  color: #fff;
+  text-shadow: 1px 1px 0 #555;
+}
+
+#stats {
+  position: absolute;
+  top: 10px;
+  right: 250px;
+}
+
+#game-title h1, h2 {
+  margin-top: 50px;
+  font-family: 'Press Start 2P', cursive;
+  color: #fff;
+  text-shadow: 1px 1px 0 #555;
+  text-align: center;
+}
+
+#game-title h1 {
+  font-size: 24px;
+}
+
+#game-title h2 {
+  font-size: 18px;
+  margin-top: 0px;
+  color: #880808;
+  text-shadow: 1px 1px 0 #fff;
+}
+
+#game-info {
+  color: #fff;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 12px;
+  margin-top: 40px;
+  text-align: center;
+  text-shadow: 1px 1px 0 #555;
+  line-height: 18px;
+}
+
+#start-button {
+  background: rgba(50,50,50,0.5);
+  border:0;
+  box-shadow:3px 3px 0 rgba(255,255,255,0.3);
+  color:#fff;
+  cursor: pointer;
+  display:inline-block;
+  font-family:'Press Start 2P', cursive;
+  margin-top:20px;
+  padding:20px 0;
+  position:relative;
+  text-align:center;
+  text-shadow:2px 2px 0 #444;
+  width:200px;
+}
+#start-button:active {
+  box-shadow:none;
+  left:3px;
+  top:3px;
+}

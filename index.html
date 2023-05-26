@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
+    <title>Furuparkskolan - Spöken på rymmen</title>
+
+    <!-- css -->
+		<link rel="stylesheet" href="css/main.css">
+  </head>
+
+  <body>
+	<div id="game-title">
+      <h1>FURUPARKSKOLAN</h1>
+      <h2>SPÖKEN PÅ RYMMEN</h2>
+    </div><!-- end game-title -->
+  
+    <div class="teacher-select">
+      <h2>Välj spelare:</h2>
+      <input type="radio" id="fredrik" name="teacher" value="fredrik" checked>
+      <label for="fredrik">Fredrik</label>
+      <input type="radio" id="brittmarie" name="teacher" value="brittmarie">
+      <label for="brittmarie">Britt-Marie</label>
+      <br>
+      <button id="start-button">Starta spel</button>
+    </div><!-- end teacher-select -->
+
+    <div id="game-container" style="display: none;"></div>
+
+    <div id="stats">
+      <div id="money-display"></div>
+      <div id="lives-display"></div>
+    </div><!-- end stats -->
+
+    <div id="game-info">
+      <p>Hur du spelar:</p>
+      <p>
+		Hjälp rektor Fredrik att fånga spöken.<br>
+        Använd WASD för att flytta spelaren.<br>
+        Tryck "Enter" för att fånga ett spöke.<br>
+        Försök att fånga så många spöken som <br>
+        möjligt innan dina liv tar slut.<br>
+        Men se upp, spökena dyker upp på dom<br>
+        mest luriga ställena.
+      </p>
+    </div><!-- end game-info -->
+
+    <!-- js -->
+    <script src="js/game.js"></script>
+  </body>
+</html>
