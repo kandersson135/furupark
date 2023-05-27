@@ -77,7 +77,18 @@ input, label, .teacher-select h2 {
   text-shadow: 1px 1px 0 #555;
 }
 
-#stats {
+#lives-display {
+  background-image: url(../img/heart.png);
+  background-repeat: no-repeat;
+  background-position: 0px -5px;
+  background-size: 24px 24px;
+  position: absolute;
+  top: 10px;
+  left: 250px;
+  text-indent: 30px;
+}
+
+#money-display {
   position: absolute;
   top: 10px;
   right: 250px;
