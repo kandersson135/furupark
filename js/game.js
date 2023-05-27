@@ -92,7 +92,7 @@ class Zombie extends Character {
 
     if (remainingTime === 0) {
       lives--; // Subtract one life when the time limit is reached
-      livesDisplay.textContent = `Antal liv: ${lives}`;
+      livesDisplay.textContent = lives;
       if (lives === 0) {
         endGame();
       }
@@ -177,12 +177,12 @@ function getRandomPosition(max) {
 
 // Update money display
 function updateMoneyDisplay() {
-  moneyDisplay.textContent = `Poäng: ${money}`;
+  moneyDisplay.textContent = money;
 }
 
 // Update lives display
 function updateLivesDisplay() {
-  livesDisplay.textContent = `Antal liv: ${lives}`;
+  livesDisplay.textContent = lives;
 }
 
 // Key event listener
@@ -256,7 +256,7 @@ function endGame() {
 	gameInfo.style.display = 'block';
 	gameTitle.style.display = 'block';
 	money = 0;
-	lives = 3;
+	lives = 5;
 	failAudio.play();
 
 	setTimeout(function(){
