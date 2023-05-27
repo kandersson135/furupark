@@ -97,7 +97,11 @@ class Zombie extends Character {
       }
       this.element.remove();
       clearInterval(this.timerInterval);
-	  toinkAudio.play();
+      toinkAudio.play();
+    }
+
+    if (lives === 1) {
+      bgAudio.playbackRate = 3;
     }
   }
 }
@@ -119,8 +123,8 @@ class Teacher extends Character {
       if (this.checkCollision(this, zombie)) {
         zombie.element.remove();
         clearInterval(zombie.timerInterval);
-        money += 10; // Earn money for killing zombies
-        updateMoneyDisplay();
+        //money += 10; // Earn money for killing zombies
+        increasePoints();
         popAudio.play();
       }
     });
@@ -133,6 +137,15 @@ class Teacher extends Character {
       Math.abs(character1.y - character2.y) <= tolerance
     );
   }
+}
+
+// Increase points
+function increasePoints() {
+  var basePoints = 10;  // Base points earned per ghost
+  var multiplier = Math.floor(money / 100) + 1;  // Multiplier based on current points divided by 100, plus 1
+  var pointsEarned = basePoints * multiplier;
+  money += pointsEarned;
+  updateMoneyDisplay();
 }
 
 // Create characters
@@ -203,8 +216,8 @@ startButton.addEventListener('click', () => {
   const selectedTeacher = document.querySelector('input[name="teacher"]:checked');
   if (selectedTeacher) {
     teacherSelectScreen.style.display = 'none';
-	gameInfo.style.display = 'none';
-	gameTitle.style.display = 'none';
+    gameInfo.style.display = 'none';
+    gameTitle.style.display = 'none';
     gameContainer.style.display = 'block';
     createCharacters(selectedTeacher.value);
     activeTeacher = characters[0];
@@ -214,6 +227,15 @@ startButton.addEventListener('click', () => {
     updateLivesDisplay();
     zombieSpawnInterval = setInterval(spawnZombie, 3500); // Adjust the zombie spawn interval as needed
     bgAudio.play();
+  }
+});
+
+// Add event listener for key press
+document.addEventListener("keypress", function(event) {
+  // Check if the pressed key is Space (key code 32)
+  if (event.keyCode === 32 || event.which === 32) {
+    // Trigger the button click event
+    startButton.click();
   }
 });
 
@@ -229,8 +251,8 @@ function endGame() {
 	failAudio.play();
 
 	setTimeout(function(){
-		window.location.reload();	
-	}, 2000);
+		window.location.reload();
+	}, 1200);
 }
 
 // Initialize the game
