@@ -8,15 +8,16 @@ const gameInfo = document.getElementById('game-info');
 const gameTitle = document.getElementById('game-title');
 const characters = [];
 const audio = new Audio('audio/hehe.mp3');
-const bgAudio = new Audio('audio/bg.mp3');
+const bgAudio = new Audio('audio/bg1.mp3');
 const popAudio = new Audio('audio/pop.mp3');
 const failAudio = new Audio('audio/fail.mp3');
 const toinkAudio = new Audio('audio/toink.mp3');
 bgAudio.volume = 0.3;
 bgAudio.loop = true;
-audio.volume = 0.3;
-toinkAudio.volume = 0.3;
-failAudio.volume = 0.3;
+audio.volume = 0.1;
+toinkAudio.volume = 0.1;
+failAudio.volume = 0.1;
+popAudio.volume = 0.3;
 
 let activeTeacher;
 let money = 0;
@@ -241,16 +242,8 @@ document.addEventListener("keypress", function(event) {
 // CHange playback rate
 function playbackRate() {
   window.setInterval( function(){
-    if (lives === 4) {
-      bgAudio.playbackRate = 1.5;
-    } else if (lives === 3) {
-      bgAudio.playbackRate = 2;
-    } else if (lives === 2) {
-      bgAudio.playbackRate = 2.5;
-    } else if (lives === 1) {
-      bgAudio.playbackRate = 3;
-    } else {
-      bgAudio.playbackRate = 1;
+    if (lives === 1) {
+      bgAudio.playbackRate = 1.2;
     }
   },10);
 }
