@@ -100,9 +100,7 @@ class Zombie extends Character {
       toinkAudio.play();
     }
 
-    if (lives === 1) {
-      bgAudio.playbackRate = 3;
-    }
+
   }
 }
 
@@ -227,6 +225,7 @@ startButton.addEventListener('click', () => {
     updateLivesDisplay();
     zombieSpawnInterval = setInterval(spawnZombie, 3500); // Adjust the zombie spawn interval as needed
     bgAudio.play();
+    playbackRate();
   }
 });
 
@@ -238,6 +237,23 @@ document.addEventListener("keypress", function(event) {
     startButton.click();
   }
 });
+
+// CHange playback rate
+function playbackRate() {
+  window.setInterval( function(){
+    if (lives === 4) {
+      bgAudio.playbackRate = 1.5;
+    } else if (lives === 3) {
+      bgAudio.playbackRate = 2;
+    } else if (lives === 2) {
+      bgAudio.playbackRate = 2.5;
+    } else if (lives === 1) {
+      bgAudio.playbackRate = 3;
+    } else {
+      bgAudio.playbackRate = 1;
+    }
+  },10);
+}
 
 // End game
 function endGame() {
