@@ -106,6 +106,12 @@ input, label, .teacher-select h2 {
   line-height: 18px;
 }
 
+#speech-bubble {
+	position: absolute;
+	bottom: 0px;
+	right: 20px;
+}
+
 #start-button {
   background: rgba(50,50,50,0.5);
   border:0;
