@@ -16,7 +16,8 @@ input, label, .teacher-select h2 {
   width: 600px;
   height: 500px;
   background-image: url(../img/map.png);
-  background-position: center;
+  /* background-position: center; */
+  background-position: 35px 0px;
   background-size: contain;
   background-repeat: no-repeat;
   margin: 0 auto;
@@ -58,6 +59,7 @@ input, label, .teacher-select h2 {
 
 .teacher-select {
   text-align: center;
+  animation: fadein 2s;
 }
 
 .teacher-select label {
@@ -75,6 +77,7 @@ input, label, .teacher-select h2 {
   font-size: 14px;
   color: #fff;
   text-shadow: 1px 1px 0 #555;
+  animation: fadein 5s;
 }
 
 #lives-display {
@@ -100,6 +103,7 @@ input, label, .teacher-select h2 {
   color: #fff;
   text-shadow: 1px 1px 0 #555;
   text-align: center;
+  animation: fadein 2s;
 }
 
 #game-title h1 {
@@ -121,12 +125,14 @@ input, label, .teacher-select h2 {
   text-align: center;
   text-shadow: 1px 1px 0 #555;
   line-height: 18px;
+  animation: fadein 2s;
 }
 
 #speech-bubble {
 	position: absolute;
 	bottom: 10px;
 	right: 20px;
+  animation: fadein 2s;
 }
 
 #start-button {
