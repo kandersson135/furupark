@@ -4,6 +4,7 @@ const gameContainer = document.getElementById('game-container');
 const startButton = document.getElementById('start-button');
 const moneyDisplay = document.getElementById('money-display');
 const livesDisplay = document.getElementById('lives-display');
+const speechBubble = document.getElementById('speech-bubble');
 const gameInfo = document.getElementById('game-info');
 const gameTitle = document.getElementById('game-title');
 const characters = [];
@@ -177,7 +178,8 @@ function getRandomPosition(max) {
 
 // Update money display
 function updateMoneyDisplay() {
-  moneyDisplay.textContent = money;
+  //moneyDisplay.textContent = money;
+  moneyDisplay.textContent = shortenNumber(money, 2);
 }
 
 // Update lives display
@@ -217,6 +219,7 @@ startButton.addEventListener('click', () => {
     teacherSelectScreen.style.display = 'none';
     gameInfo.style.display = 'none';
     gameTitle.style.display = 'none';
+    speechBubble.style.display = 'none';
     gameContainer.style.display = 'block';
     createCharacters(selectedTeacher.value);
     activeTeacher = characters[0];
@@ -246,6 +249,29 @@ function playbackRate() {
       bgAudio.playbackRate = 1.2;
     }
   },10);
+}
+
+// Shorten numbers
+function shortenNumber(n, d) {
+  if (n < 1) return "0";
+  var k = n = Math.floor(n);
+  if (n < 1000000000) return (n.toString().split("."))[0];
+  if (d !== 0) d = d || 1;
+
+  function shorten(a, b, c) {
+    var d = a.toString().split(".");
+    if (!d[1] || b === 0) {
+    	return d[0] + c;
+    } else {
+    	return d[0] + "." + d[1].substring(0, b) + c;
+    }
+  }
+
+  k = n / 1e15;	if (k >= 1) return shorten(k, d, "Q");
+  k = n / 1e12;	if (k >= 1) return shorten(k, d, "T");
+  k = n / 1e9;	if (k >= 1) return shorten(k, d, "B");
+  k = n / 1e6;	if (k >= 1) return shorten(k, d, "M");
+  k = n / 1e3;	if (k >= 1) return shorten(k, d, "K");
 }
 
 // End game
