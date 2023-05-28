@@ -8,7 +8,7 @@ body {
 }
 
 input, label, .teacher-select h2 {
-	display: none;
+	/* display: none; */
 }
 
 #game-container {
@@ -51,7 +51,6 @@ input, label, .teacher-select h2 {
 
 .teacher {
   background-color: transparent;
-  background-image: url(../img/teacher.png);
   background-position: center;
   background-size: contain;
   background-repeat: no-repeat;
@@ -60,6 +59,10 @@ input, label, .teacher-select h2 {
 .teacher-select {
   text-align: center;
   animation: fadein 2s;
+}
+
+.teacher-select h2 {
+  font-size: 14px;
 }
 
 .teacher-select label {
@@ -76,19 +79,21 @@ input, label, .teacher-select h2 {
   font-family: 'Press Start 2P', cursive;
   font-size: 14px;
   color: #fff;
-  text-shadow: 1px 1px 0 #555;
   animation: fadein 5s;
+  text-shadow: 1px 1px 0 #555;
 }
 
 #lives-display {
+  /*
   background-image: url(../img/heart.png);
   background-repeat: no-repeat;
   background-position: 0px -5px;
   background-size: 24px 24px;
+  */
   position: absolute;
   top: 10px;
   left: 250px;
-  text-indent: 30px;
+  /* text-indent: 30px; */
 }
 
 #money-display {
