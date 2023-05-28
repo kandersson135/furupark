@@ -7,6 +7,7 @@ const livesDisplay = document.getElementById('lives-display');
 const speechBubble = document.getElementById('speech-bubble');
 const gameInfo = document.getElementById('game-info');
 const gameTitle = document.getElementById('game-title');
+const teacher = document.querySelector('.teacher');
 const characters = [];
 const audio = new Audio('audio/hehe.mp3');
 const bgAudio = new Audio('audio/bg1.mp3');
@@ -43,28 +44,28 @@ class Character {
 
   moveUp() {
     if (this.y > 0) {
-      this.y -= 5;
+      this.y -= activeTeacher.speed;
       this.setPosition();
     }
   }
 
   moveDown() {
     if (this.y < gameContainer.clientHeight - 50) {
-      this.y += 5;
+      this.y += activeTeacher.speed;
       this.setPosition();
     }
   }
 
   moveLeft() {
     if (this.x > 0) {
-      this.x -= 5;
+      this.x -= activeTeacher.speed;
       this.setPosition();
     }
   }
 
   moveRight() {
     if (this.x < gameContainer.clientWidth - 50) {
-      this.x += 5;
+      this.x += activeTeacher.speed;
       this.setPosition();
     }
   }
@@ -93,7 +94,8 @@ class Zombie extends Character {
 
     if (remainingTime === 0) {
       lives--; // Subtract one life when the time limit is reached
-      livesDisplay.textContent = lives;
+      //livesDisplay.textContent = lives;
+      livesDisplay.textContent = activeTeacher.name + ': ' + lives;
       if (lives === 0) {
         endGame();
       }
@@ -101,17 +103,16 @@ class Zombie extends Character {
       clearInterval(this.timerInterval);
       toinkAudio.play();
     }
-
-
   }
 }
 
 // Teacher class (inherits from Character)
 class Teacher extends Character {
-  constructor(name, x, y, ability) {
+  constructor(name, x, y, ability, speed) {
     super(name, x, y);
     this.element.classList.add('teacher');
     this.ability = ability;
+    this.speed = speed;
   }
 
   useAbility() {
@@ -123,8 +124,9 @@ class Teacher extends Character {
       if (this.checkCollision(this, zombie)) {
         zombie.element.remove();
         clearInterval(zombie.timerInterval);
-        //money += 10; // Earn money for killing zombies
-        increasePoints();
+        money += 100; // Earn money for catching ghosts
+        updateMoneyDisplay();
+        //increasePoints();
         popAudio.play();
       }
     });
@@ -149,11 +151,26 @@ function increasePoints() {
 }
 
 // Create characters
+/*
 function createCharacters(teacherType) {
   if (teacherType === 'fredrik') {
     characters.push(new Teacher('Fredrik', 100, 100, 'Rektor'));
   } else if (teacherType === 'brittmarie') {
     characters.push(new Teacher('Britt-Marie', 100, 100, 'Spökjägare'));
+  }
+}
+*/
+
+// Name, speed, money, ability
+function createCharacters(teacherType) {
+  if (teacherType === 'fredrik') {
+    const fredrik = new Teacher('Fredrik', 100, 100, 'Rektor', 5);
+    fredrik.element.style.backgroundImage = "url(img/teacher.png)";
+    characters.push(fredrik);
+  } else if (teacherType === 'renee') {
+    const renee = new Teacher('Renée', 100, 100, 'Skolhandläggare', 6);
+    renee.element.style.backgroundImage = "url(img/teacher2.png)";
+    characters.push(renee);
   }
 }
 
@@ -178,13 +195,16 @@ function getRandomPosition(max) {
 
 // Update money display
 function updateMoneyDisplay() {
-  //moneyDisplay.textContent = money;
-  moneyDisplay.textContent = shortenNumber(money, 2);
+  const scoreStr = money.toString().padStart(6, '0');
+  moneyDisplay.textContent = scoreStr;
+  //moneyDisplay.textContent = shortenNumber(money, 2);
 }
 
 // Update lives display
 function updateLivesDisplay() {
-  livesDisplay.textContent = lives;
+  //livesDisplay.textContent = lives;
+  //livesDisplay.textContent = `Fredrik: ${lives}`;
+  livesDisplay.textContent = activeTeacher.name + ': ' + lives;
 }
 
 // Key event listener
@@ -233,15 +253,6 @@ startButton.addEventListener('click', () => {
   }
 });
 
-// Add event listener for key press
-document.addEventListener("keypress", function(event) {
-  // Check if the pressed key is Space (key code 32)
-  if (event.keyCode === 32 || event.which === 32) {
-    // Trigger the button click event
-    startButton.click();
-  }
-});
-
 // CHange playback rate
 function playbackRate() {
   window.setInterval( function(){
@@ -251,29 +262,6 @@ function playbackRate() {
   },10);
 }
 
-// Shorten numbers
-function shortenNumber(n, d) {
-  if (n < 1) return "0";
-  var k = n = Math.floor(n);
-  if (n < 1000000000) return (n.toString().split("."))[0];
-  if (d !== 0) d = d || 1;
-
-  function shorten(a, b, c) {
-    var d = a.toString().split(".");
-    if (!d[1] || b === 0) {
-    	return d[0] + c;
-    } else {
-    	return d[0] + "." + d[1].substring(0, b) + c;
-    }
-  }
-
-  k = n / 1e15;	if (k >= 1) return shorten(k, d, "Q");
-  k = n / 1e12;	if (k >= 1) return shorten(k, d, "T");
-  k = n / 1e9;	if (k >= 1) return shorten(k, d, "B");
-  k = n / 1e6;	if (k >= 1) return shorten(k, d, "M");
-  k = n / 1e3;	if (k >= 1) return shorten(k, d, "K");
-}
-
 // End game
 function endGame() {
 	clearInterval(zombieSpawnInterval);
@@ -281,8 +269,8 @@ function endGame() {
 	teacherSelectScreen.style.display = 'block';
 	gameInfo.style.display = 'block';
 	gameTitle.style.display = 'block';
-	money = 0;
-	lives = 5;
+	//money = 0;
+	//lives = 5;
 	failAudio.play();
 
 	setTimeout(function(){
