@@ -47,6 +47,7 @@ input, label, .teacher-select h2 {
   background-repeat: no-repeat;
   animation: shake 1.7s;
   animation-iteration-count: infinite;
+  image-rendering: crisp-edges;
 }
 
 .teacher {
@@ -54,6 +55,7 @@ input, label, .teacher-select h2 {
   background-position: center;
   background-size: contain;
   background-repeat: no-repeat;
+  image-rendering: crisp-edges;
 }
 
 .teacher-select {
