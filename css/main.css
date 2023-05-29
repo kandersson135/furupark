@@ -175,6 +175,7 @@ input, label, .teacher-select h2 {
   position: absolute;
   top: 50px;
   left: 0px;
+  animation: fadein 2s;
 }
 
 #highScoresList li {
