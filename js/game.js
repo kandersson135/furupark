@@ -284,35 +284,36 @@ function endGame() {
 		window.location.reload();
 	}, 2500);
   */
+  setTimeout(function(){
+    // Prompt the player to enter their name
+    const playerName = prompt('Skriv in ditt namn:');
 
-  // Prompt the player to enter their name
-  const playerName = prompt('Skriv in ditt namn:');
+    // Only proceed if the player entered a name
+    if (playerName) {
+      // Create a new object with the player's name and score
+      const playerScore = { name: playerName, score: money };
 
-  // Only proceed if the player entered a name
-  if (playerName) {
-    // Create a new object with the player's name and score
-    const playerScore = { name: playerName, score: money };
+      // Add the player's score to the high scores array
+      highScores.push(playerScore);
 
-    // Add the player's score to the high scores array
-    highScores.push(playerScore);
+      // Sort the high scores array
+      highScores.sort((a, b) => b.score - a.score);
 
-    // Sort the high scores array
-    highScores.sort((a, b) => b.score - a.score);
+      // Limit the number of high scores
+      const maxHighScores = 10;
+      highScores = highScores.slice(0, maxHighScores);
 
-    // Limit the number of high scores
-    const maxHighScores = 10;
-    highScores = highScores.slice(0, maxHighScores);
+      // Save the updated high scores
+      localStorage.setItem('highScores', JSON.stringify(highScores));
 
-    // Save the updated high scores
-    localStorage.setItem('highScores', JSON.stringify(highScores));
+      // Display the high scores
+      //displayHighScores();
 
-    // Display the high scores
-    //displayHighScores();
-
-    window.location.reload();
-  } else {
-    window.location.reload();
-  }
+      window.location.reload();
+    } else {
+      window.location.reload();
+    }
+  }, 500);
 }
 
 // Function to display high scores in a list
