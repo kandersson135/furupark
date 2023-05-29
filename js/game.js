@@ -313,7 +313,7 @@ function endGame() {
     } else {
       window.location.reload();
     }
-  }, 500);
+  }, 800);
 }
 
 // Function to display high scores in a list
