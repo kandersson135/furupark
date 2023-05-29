@@ -15,9 +15,9 @@ input, label, .teacher-select h2 {
   position: relative;
   width: 600px;
   height: 500px;
-  background-image: url(../img/map.png);
+  background-image: url(../img/map1.png);
   /* background-position: center; */
-  background-position: 35px 0px;
+  background-position: 15px 0px;
   background-size: contain;
   background-repeat: no-repeat;
   margin: 0 auto;
