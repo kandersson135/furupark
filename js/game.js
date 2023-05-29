@@ -117,25 +117,32 @@ class Teacher extends Character {
     this.ability = ability;
     this.speed = speed;
     this.points = points
+    this.abilityCooldown = 0;
   }
 
   useAbility() {
-    //console.log(`${this.name} uses ${this.ability} ability!`);
-    // Implement the ability logic here
-    // For now, we remove the zombie when the ability is used
+  if (this.abilityCooldown === 0) {
     const zombies = characters.filter(character => character instanceof Zombie);
     zombies.forEach(zombie => {
       if (this.checkCollision(this, zombie)) {
         zombie.element.remove();
         clearInterval(zombie.timerInterval);
-        //money += 100; // Earn money for catching ghosts
         money += activeTeacher.points;
         updateMoneyDisplay();
-        //increasePoints();
         popAudio.play();
       }
     });
+
+    // Set the cooldown duration in milliseconds
+    const abilityCooldownDuration = 1000; // 1 second
+
+    // Disable ability usage for the cooldown duration
+    this.abilityCooldown = abilityCooldownDuration;
+    setTimeout(() => {
+      this.abilityCooldown = 0;
+    }, abilityCooldownDuration);
   }
+}
 
   checkCollision(character1, character2) {
     const tolerance = 25; // Adjust this value as needed
