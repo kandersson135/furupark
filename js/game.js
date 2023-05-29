@@ -284,6 +284,7 @@ function endGame() {
 	//gameTitle.style.display = 'block';
 	//money = 0;
 	//lives = 5;
+  bgAudio.pause();
 	failAudio.play();
 
   /*
