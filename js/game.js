@@ -121,28 +121,28 @@ class Teacher extends Character {
   }
 
   useAbility() {
-  if (this.abilityCooldown === 0) {
-    const zombies = characters.filter(character => character instanceof Zombie);
-    zombies.forEach(zombie => {
-      if (this.checkCollision(this, zombie)) {
-        zombie.element.remove();
-        clearInterval(zombie.timerInterval);
-        money += activeTeacher.points;
-        updateMoneyDisplay();
-        popAudio.play();
-      }
-    });
+    if (this.abilityCooldown === 0) {
+      const zombies = characters.filter(character => character instanceof Zombie);
+      zombies.forEach(zombie => {
+        if (this.checkCollision(this, zombie)) {
+          zombie.element.remove();
+          clearInterval(zombie.timerInterval);
+          money += activeTeacher.points;
+          updateMoneyDisplay();
+          popAudio.play();
+        }
+      });
 
-    // Set the cooldown duration in milliseconds
-    const abilityCooldownDuration = 1000; // 1 second
+      // Set the cooldown duration in milliseconds
+      const abilityCooldownDuration = 1000; // 1 second
 
-    // Disable ability usage for the cooldown duration
-    this.abilityCooldown = abilityCooldownDuration;
-    setTimeout(() => {
-      this.abilityCooldown = 0;
-    }, abilityCooldownDuration);
+      // Disable ability usage for the cooldown duration
+      this.abilityCooldown = abilityCooldownDuration;
+      setTimeout(() => {
+        this.abilityCooldown = 0;
+      }, abilityCooldownDuration);
+    }
   }
-}
 
   checkCollision(character1, character2) {
     const tolerance = 25; // Adjust this value as needed
