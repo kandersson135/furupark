@@ -25,6 +25,8 @@ let activeTeacher;
 let money = 0;
 let lives = 5; // Initial number of lives
 let zombieSpawnInterval;
+let highScores = [
+];
 
 // Character class
 class Character {
@@ -275,14 +277,70 @@ function endGame() {
 	//lives = 5;
 	failAudio.play();
 
+  /*
 	setTimeout(function(){
 		window.location.reload();
 	}, 2500);
+  */
+
+  // Prompt the player to enter their name
+  const playerName = prompt('Skriv in ditt namn:');
+
+  // Only proceed if the player entered a name
+  if (playerName) {
+    // Create a new object with the player's name and score
+    const playerScore = { name: playerName, score: money };
+
+    // Add the player's score to the high scores array
+    highScores.push(playerScore);
+
+    // Sort the high scores array
+    highScores.sort((a, b) => b.score - a.score);
+
+    // Limit the number of high scores
+    const maxHighScores = 10;
+    highScores = highScores.slice(0, maxHighScores);
+
+    // Save the updated high scores
+    localStorage.setItem('highScores', JSON.stringify(highScores));
+
+    // Display the high scores
+    //displayHighScores();
+
+    window.location.reload();
+  } else {
+    window.location.reload();
+  }
+}
+
+// Function to display high scores in a list
+function displayHighScores() {
+  const list = document.getElementById('highScoresList');
+
+  // Clear existing list items
+  while (list.firstChild) {
+    list.firstChild.remove();
+  }
+
+  // Retrieve high scores from local storage
+  const savedHighScores = JSON.parse(localStorage.getItem('highScores'));
+
+  if (savedHighScores) {
+    highScores = savedHighScores;
+
+    // Iterate through high scores and create list items
+    highScores.forEach((score, index) => {
+      const listItem = document.createElement('li');
+      listItem.textContent = `${index + 1}. ${score.name} - ${score.score}`;
+      list.appendChild(listItem);
+    });
+  }
 }
 
 // Initialize the game
 function initGame() {
   teacherSelectScreen.style.display = 'block';
+  displayHighScores();
 }
 
 // Run the game
