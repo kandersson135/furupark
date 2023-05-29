@@ -108,11 +108,12 @@ class Zombie extends Character {
 
 // Teacher class (inherits from Character)
 class Teacher extends Character {
-  constructor(name, x, y, ability, speed) {
+  constructor(name, x, y, ability, speed, points) {
     super(name, x, y);
     this.element.classList.add('teacher');
     this.ability = ability;
     this.speed = speed;
+    this.points = points
   }
 
   useAbility() {
@@ -124,7 +125,8 @@ class Teacher extends Character {
       if (this.checkCollision(this, zombie)) {
         zombie.element.remove();
         clearInterval(zombie.timerInterval);
-        money += 100; // Earn money for catching ghosts
+        //money += 100; // Earn money for catching ghosts
+        money += activeTeacher.points;
         updateMoneyDisplay();
         //increasePoints();
         popAudio.play();
@@ -161,14 +163,14 @@ function createCharacters(teacherType) {
 }
 */
 
-// Name, speed, money, ability
+// Name, x, y, ability, speed, points
 function createCharacters(teacherType) {
   if (teacherType === 'fredrik') {
-    const fredrik = new Teacher('Fredrik', 100, 100, 'Rektor', 5);
+    const fredrik = new Teacher('Fredrik', 100, 100, 'Rektor', 5, 100);
     fredrik.element.style.backgroundImage = "url(img/teacher.png)";
     characters.push(fredrik);
   } else if (teacherType === 'renee') {
-    const renee = new Teacher('Renée', 100, 100, 'Skolhandläggare', 6);
+    const renee = new Teacher('Renée', 100, 100, 'Skolhandläggare', 7, 50);
     renee.element.style.backgroundImage = "url(img/teacher2.png)";
     characters.push(renee);
   }
@@ -265,17 +267,17 @@ function playbackRate() {
 // End game
 function endGame() {
 	clearInterval(zombieSpawnInterval);
-	gameContainer.style.display = 'none';
-	teacherSelectScreen.style.display = 'block';
-	gameInfo.style.display = 'block';
-	gameTitle.style.display = 'block';
+	//gameContainer.style.display = 'none';
+	//ateacherSelectScreen.style.display = 'block';
+	//gameInfo.style.display = 'block';
+	//gameTitle.style.display = 'block';
 	//money = 0;
 	//lives = 5;
 	failAudio.play();
 
 	setTimeout(function(){
 		window.location.reload();
-	}, 1200);
+	}, 2500);
 }
 
 // Initialize the game
