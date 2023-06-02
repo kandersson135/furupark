@@ -221,7 +221,6 @@ function updateLivesDisplay() {
 
 
 // Key event listener
-/*
 document.addEventListener('keydown', (event) => {
   if (activeTeacher) {
     const key = event.key;
@@ -245,8 +244,8 @@ document.addEventListener('keydown', (event) => {
     }
   }
 });
-*/
 
+/*
 // Key event listener
 const keysPressed = {};
 
@@ -282,7 +281,7 @@ function handleKeyPress() {
     }
   }
 }
-
+*/
 
 // Start game
 startButton.addEventListener('click', () => {
