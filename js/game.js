@@ -219,7 +219,9 @@ function updateLivesDisplay() {
   livesDisplay.textContent = activeTeacher.name + ': ' + lives;
 }
 
+
 // Key event listener
+/*
 document.addEventListener('keydown', (event) => {
   if (activeTeacher) {
     const key = event.key;
@@ -243,6 +245,44 @@ document.addEventListener('keydown', (event) => {
     }
   }
 });
+*/
+
+// Key event listener
+const keysPressed = {};
+
+document.addEventListener('keydown', (event) => {
+  keysPressed[event.key] = true;
+  handleKeyPress();
+});
+
+document.addEventListener('keyup', (event) => {
+  delete keysPressed[event.key];
+});
+
+function handleKeyPress() {
+  if (activeTeacher) {
+    if (keysPressed['w'] || keysPressed['ArrowUp']) {
+      activeTeacher.moveUp();
+    }
+
+    if (keysPressed['s'] || keysPressed['ArrowDown']) {
+      activeTeacher.moveDown();
+    }
+
+    if (keysPressed['a'] || keysPressed['ArrowLeft']) {
+      activeTeacher.moveLeft();
+    }
+
+    if (keysPressed['d'] || keysPressed['ArrowRight']) {
+      activeTeacher.moveRight();
+    }
+
+    if (keysPressed[' '] || keysPressed['Space']) {
+      activeTeacher.useAbility();
+    }
+  }
+}
+
 
 // Start game
 startButton.addEventListener('click', () => {
