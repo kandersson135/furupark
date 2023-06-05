@@ -198,11 +198,11 @@ function createCharacters(teacherType) {
 function createCharacters(teacherType) {
   if (teacherType === 'fredrik') {
     const fredrik = new Teacher('Fredrik', 100, 100, 'Rektor', 5, 10);
-    fredrik.element.style.backgroundImage = "url(img/teacher.png)";
+    fredrik.element.style.backgroundImage = "url(img/teacher3.png)";
     characters.push(fredrik);
   } else if (teacherType === 'renee') {
     const renee = new Teacher('Renée', 100, 100, 'Skolhandläggare', 7, 20);
-    renee.element.style.backgroundImage = "url(img/teacher2.png)";
+    renee.element.style.backgroundImage = "url(img/teacher4.png)";
     characters.push(renee);
   }
 }
