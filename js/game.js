@@ -273,38 +273,59 @@ document.addEventListener('keydown', (event) => {
   }
 });
 
+
 let timerValue = 0
 let interval;
 
-const mousePress = () => {
+const pressUp = () => {
   interval = setInterval(() => {
     timerValue++
     activeTeacher.moveUp();
     document.body.style.webkitUserSelect = "none";
-  }, 50)
+  }, 30)
 }
 
-const mouseRelease = () => {
+const pressDown = () => {
+  interval = setInterval(() => {
+    timerValue++
+    activeTeacher.moveDown();
+    document.body.style.webkitUserSelect = "none";
+  }, 30)
+}
+
+const pressRight = () => {
+  interval = setInterval(() => {
+    timerValue++
+    activeTeacher.moveRight();
+    document.body.style.webkitUserSelect = "none";
+  }, 30)
+}
+
+const pressLeft = () => {
+  interval = setInterval(() => {
+    timerValue++
+    activeTeacher.moveLeft();
+    document.body.style.webkitUserSelect = "none";
+  }, 30)
+}
+
+const buttonRelease = () => {
   clearInterval(interval)
   timerValue = 0
   document.body.style.webkitUserSelect = null;
 }
 
-dUp.addEventListener("touchstart", mousePress)
-dUp.addEventListener("touchend", mouseRelease)
+dUp.addEventListener("touchstart", pressUp);
+dUp.addEventListener("touchend", buttonRelease);
 
+dDown.addEventListener("touchstart", pressDown);
+dDown.addEventListener("touchend", buttonRelease);
 
-dDown.addEventListener('touchstart', () => {
-  activeTeacher.moveDown();
-});
+dLeft.addEventListener("touchstart", pressLeft);
+dLeft.addEventListener("touchend", buttonRelease);
 
-dLeft.addEventListener('touchstart', () => {
-  activeTeacher.moveLeft();
-});
-
-dRight.addEventListener('touchstart', () => {
-  activeTeacher.moveRight();
-});
+dRight.addEventListener("touchstart", pressRight);
+dRight.addEventListener("touchend", buttonRelease);
 
 actionButton.addEventListener('touchstart', () => {
   activeTeacher.useAbility();
