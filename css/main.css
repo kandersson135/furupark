@@ -227,6 +227,13 @@ input, label, .teacher-select h2 {
   right:100px;
 }
 
+@media screen and (min-width: 768px) {
+  /* Hide the D-pad on larger screens */
+  #gameControls, #actionButton {
+    display: none !important;
+  }
+}
+
 /* ANIMATE SHAKE */
 @keyframes shake {
   0% { transform: translate(1px, 1px) rotate(0deg); }
