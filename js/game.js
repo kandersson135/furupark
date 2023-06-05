@@ -129,7 +129,7 @@ class Teacher extends Character {
           clearInterval(zombie.timerInterval);
           //money += activeTeacher.points;
           //updateMoneyDisplay();
-	  increasePoints();
+          increasePoints();
           popAudio.play();
         }
       });
@@ -155,10 +155,29 @@ class Teacher extends Character {
 }
 
 // Increase points
+/*
 function increasePoints() {
   //var basePoints = 10;  // Base points earned per ghost
   var basePoints = activeTeacher.points;
+  var multiplier = Math.floor(money / 1000) + 1;  // Multiplier based on current points divided by 100, plus 1
+  var pointsEarned = basePoints * multiplier;
+  money += pointsEarned;
+  updateMoneyDisplay();
+}
+*/
+
+// Increase points
+function increasePoints() {
+  var basePoints = activeTeacher.points;  // Base points earned per ghost
   var multiplier = Math.floor(money / 100) + 1;  // Multiplier based on current points divided by 100, plus 1
+
+  // Add additional factors for difficulty scaling
+  var difficultyFactor = 1.0;  // Adjust this factor based on desired difficulty
+  var maxMultiplier = 5;  // Maximum multiplier value to limit point growth
+
+  // Apply difficulty scaling and limit the multiplier
+  multiplier = Math.min(multiplier * difficultyFactor, maxMultiplier);
+
   var pointsEarned = basePoints * multiplier;
   money += pointsEarned;
   updateMoneyDisplay();
@@ -178,11 +197,11 @@ function createCharacters(teacherType) {
 // Name, x, y, ability, speed, points
 function createCharacters(teacherType) {
   if (teacherType === 'fredrik') {
-    const fredrik = new Teacher('Fredrik', 100, 100, 'Rektor', 5, 50);
+    const fredrik = new Teacher('Fredrik', 100, 100, 'Rektor', 5, 10);
     fredrik.element.style.backgroundImage = "url(img/teacher.png)";
     characters.push(fredrik);
   } else if (teacherType === 'renee') {
-    const renee = new Teacher('Renée', 100, 100, 'Skolhandläggare', 7, 60);
+    const renee = new Teacher('Renée', 100, 100, 'Skolhandläggare', 7, 20);
     renee.element.style.backgroundImage = "url(img/teacher2.png)";
     characters.push(renee);
   }
