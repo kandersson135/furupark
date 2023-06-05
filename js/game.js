@@ -273,23 +273,40 @@ document.addEventListener('keydown', (event) => {
   }
 });
 
-dUp.addEventListener('mousedown', () => {
-  activeTeacher.moveUp();
-});
+let timerValue = 0
+let interval;
 
-dDown.addEventListener('click', () => {
+const mousePress = () => {
+  interval = setInterval(() => {
+    timerValue++
+    activeTeacher.moveUp();
+    document.body.style.webkitUserSelect = "none";
+  }, 50)
+}
+
+const mouseRelease = () => {
+  clearInterval(interval)
+  timerValue = 0
+  document.body.style.webkitUserSelect = null;
+}
+
+dUp.addEventListener("touchstart", mousePress)
+dUp.addEventListener("touchend", mouseRelease)
+
+
+dDown.addEventListener('touchstart', () => {
   activeTeacher.moveDown();
 });
 
-dLeft.addEventListener('click', () => {
+dLeft.addEventListener('touchstart', () => {
   activeTeacher.moveLeft();
 });
 
-dRight.addEventListener('click', () => {
+dRight.addEventListener('touchstart', () => {
   activeTeacher.moveRight();
 });
 
-actionButton.addEventListener('click', () => {
+actionButton.addEventListener('touchstart', () => {
   activeTeacher.useAbility();
 });
 
