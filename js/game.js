@@ -197,11 +197,11 @@ function createCharacters(teacherType) {
 // Name, x, y, ability, speed, points
 function createCharacters(teacherType) {
   if (teacherType === 'fredrik') {
-    const fredrik = new Teacher('Fredrik', 100, 100, 'Rektor', 5, 10);
+    const fredrik = new Teacher('Fredrik', 100, 100, 'Rektor', 5, 20);
     fredrik.element.style.backgroundImage = "url(img/teacher3.png)";
     characters.push(fredrik);
   } else if (teacherType === 'renee') {
-    const renee = new Teacher('Renée', 100, 100, 'Skolhandläggare', 7, 20);
+    const renee = new Teacher('Renée', 100, 100, 'Skolhandläggare', 7, 10);
     renee.element.style.backgroundImage = "url(img/teacher4.png)";
     characters.push(renee);
   }
@@ -304,6 +304,10 @@ function handleKeyPress() {
 }
 */
 
+function getRandomInterval(min, max) {
+  return Math.random() * (max - min) + min;
+}
+
 // Start game
 startButton.addEventListener('click', () => {
   const selectedTeacher = document.querySelector('input[name="teacher"]:checked');
@@ -320,7 +324,8 @@ startButton.addEventListener('click', () => {
     spawnZombie();
     updateMoneyDisplay();
     updateLivesDisplay();
-    zombieSpawnInterval = setInterval(spawnZombie, 3500); // Adjust the zombie spawn interval as needed
+    //zombieSpawnInterval = setInterval(spawnZombie, 3500);
+    zombieSpawnInterval = setInterval(spawnZombie, getRandomInterval(2500, 3500));
     bgAudio.play();
     playbackRate();
   }
