@@ -127,8 +127,9 @@ class Teacher extends Character {
         if (this.checkCollision(this, zombie)) {
           zombie.element.remove();
           clearInterval(zombie.timerInterval);
-          money += activeTeacher.points;
-          updateMoneyDisplay();
+          //money += activeTeacher.points;
+          //updateMoneyDisplay();
+	  increasePoints();
           popAudio.play();
         }
       });
@@ -155,7 +156,8 @@ class Teacher extends Character {
 
 // Increase points
 function increasePoints() {
-  var basePoints = 10;  // Base points earned per ghost
+  //var basePoints = 10;  // Base points earned per ghost
+  var basePoints = activeTeacher.points;
   var multiplier = Math.floor(money / 100) + 1;  // Multiplier based on current points divided by 100, plus 1
   var pointsEarned = basePoints * multiplier;
   money += pointsEarned;
