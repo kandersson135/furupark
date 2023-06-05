@@ -2,6 +2,12 @@
 const teacherSelectScreen = document.querySelector('.teacher-select');
 const gameContainer = document.getElementById('game-container');
 const startButton = document.getElementById('start-button');
+const gameControls = document.getElementById('gameControls');
+const dUp = document.getElementById('dUp');
+const dLeft = document.getElementById('dLeft');
+const dDown = document.getElementById('dDown');
+const dright = document.getElementById('dRight');
+const actionButton = document.getElementById('actionButton');
 const moneyDisplay = document.getElementById('money-display');
 const livesDisplay = document.getElementById('lives-display');
 const speechBubble = document.getElementById('speech-bubble');
@@ -199,11 +205,11 @@ function createCharacters(teacherType) {
 function createCharacters(teacherType) {
   if (teacherType === 'fredrik') {
     const fredrik = new Teacher('Fredrik', 100, 100, 'Rektor', 5, 20);
-    fredrik.element.style.backgroundImage = "url(img/teacher3.png)";
+    fredrik.element.style.backgroundImage = "url(img/teacher.png)";
     characters.push(fredrik);
   } else if (teacherType === 'renee') {
     const renee = new Teacher('Renée', 100, 100, 'Skolhandläggare', 7, 10);
-    renee.element.style.backgroundImage = "url(img/teacher4.png)";
+    renee.element.style.backgroundImage = "url(img/teacher2.png)";
     characters.push(renee);
   }
 }
@@ -267,6 +273,26 @@ document.addEventListener('keydown', (event) => {
   }
 });
 
+dUp.addEventListener('mousedown', () => {
+  activeTeacher.moveUp();
+});
+
+dDown.addEventListener('click', () => {
+  activeTeacher.moveDown();
+});
+
+dLeft.addEventListener('click', () => {
+  activeTeacher.moveLeft();
+});
+
+dRight.addEventListener('click', () => {
+  activeTeacher.moveRight();
+});
+
+actionButton.addEventListener('click', () => {
+  activeTeacher.useAbility();
+});
+
 /*
 // Key event listener
 const keysPressed = {};
@@ -320,6 +346,8 @@ startButton.addEventListener('click', () => {
     highScoresList.style.display = 'none';
     highScoreTitle.style.display = 'none';
     gameContainer.style.display = 'block';
+    gameControls.style.display = 'block';
+    actionButton.style.display = 'block';
     createCharacters(selectedTeacher.value);
     activeTeacher = characters[0];
     setInitialPositions();
@@ -418,8 +446,16 @@ function displayHighScores() {
 // Initialize the game
 function initGame() {
   teacherSelectScreen.style.display = 'block';
+  gameControls.style.display = 'none';
+  actionButton.style.display = 'none';
   displayHighScores();
 }
 
 // Run the game
 initGame();
+
+
+//Disable right click
+document.addEventListener("contextmenu", function (e) {
+	e.preventDefault();
+}, false);

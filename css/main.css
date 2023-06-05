@@ -15,7 +15,7 @@ input, label, .teacher-select h2 {
   position: relative;
   width: 600px;
   height: 500px;
-  background-image: url(../img/map1.png);
+  background-image: url(../img/map.png);
   /* background-position: center; */
   background-position: 23px 0px;
   background-size: auto;
@@ -41,7 +41,7 @@ input, label, .teacher-select h2 {
 
 .zombie {
   background-color: transparent;
-  background-image: url(../img/ghost2.png);
+  background-image: url(../img/ghost.png);
   background-position: center;
   background-size: contain;
   background-repeat: no-repeat;
@@ -195,6 +195,36 @@ input, label, .teacher-select h2 {
   font-size: 12px;
   text-shadow: 1px 1px 0 #555;
   margin-bottom: 12px;
+}
+
+/* GAME CONTROLS */
+#gameControls {
+  position:absolute;
+  left:100px;
+  bottom: 150px;
+}
+#gameControls a,
+#actionButton {
+  background: rgba(50,50,50,0.5);
+  border:0;
+  color:#fff;
+  font-family:'Press Start 2P', cursive;
+  padding:20px 10px 10px 10px;
+  text-shadow:2px 2px 0 #444;
+}
+
+#dUp {position:relative; left: 52px;}
+#dRight {position:relative; top: 50px; left: 50px;}
+#dLeft {position:relative; top: 50px; left: -170px;}
+#dDown {position:relative; top: 100px; left: -60px;}
+
+#actionButton {
+  text-decoration: none;
+  padding:15px;
+  border-radius: 5px;
+  position: absolute;
+  bottom:100px;
+  right:100px;
 }
 
 /* ANIMATE SHAKE */
