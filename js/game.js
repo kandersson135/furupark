@@ -238,7 +238,7 @@ document.addEventListener('keydown', (event) => {
       case 'd':
         activeTeacher.moveRight();
         break;
-      case ' ':
+      case 'Enter':
         activeTeacher.useAbility();
         break;
     }
