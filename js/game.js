@@ -158,7 +158,7 @@ class Teacher extends Character {
 function increasePoints() {
   //var basePoints = 10;  // Base points earned per ghost
   var basePoints = activeTeacher.points;
-  var multiplier = Math.floor(money / 500) + 1;  // Multiplier based on current points divided by 100, plus 1
+  var multiplier = Math.floor(money / 100) + 1;  // Multiplier based on current points divided by 100, plus 1
   var pointsEarned = basePoints * multiplier;
   money += pointsEarned;
   updateMoneyDisplay();
