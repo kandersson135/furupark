@@ -178,11 +178,11 @@ function createCharacters(teacherType) {
 // Name, x, y, ability, speed, points
 function createCharacters(teacherType) {
   if (teacherType === 'fredrik') {
-    const fredrik = new Teacher('Fredrik', 100, 100, 'Rektor', 5, 100);
+    const fredrik = new Teacher('Fredrik', 100, 100, 'Rektor', 5, 50);
     fredrik.element.style.backgroundImage = "url(img/teacher.png)";
     characters.push(fredrik);
   } else if (teacherType === 'renee') {
-    const renee = new Teacher('Renée', 100, 100, 'Skolhandläggare', 7, 50);
+    const renee = new Teacher('Renée', 100, 100, 'Skolhandläggare', 7, 20);
     renee.element.style.backgroundImage = "url(img/teacher2.png)";
     characters.push(renee);
   }
