@@ -158,7 +158,7 @@ class Teacher extends Character {
 function increasePoints() {
   //var basePoints = 10;  // Base points earned per ghost
   var basePoints = activeTeacher.points;
-  var multiplier = Math.floor(money / 100) + 1;  // Multiplier based on current points divided by 100, plus 1
+  var multiplier = Math.floor(money / 500) + 1;  // Multiplier based on current points divided by 100, plus 1
   var pointsEarned = basePoints * multiplier;
   money += pointsEarned;
   updateMoneyDisplay();
@@ -182,7 +182,7 @@ function createCharacters(teacherType) {
     fredrik.element.style.backgroundImage = "url(img/teacher.png)";
     characters.push(fredrik);
   } else if (teacherType === 'renee') {
-    const renee = new Teacher('Renée', 100, 100, 'Skolhandläggare', 7, 20);
+    const renee = new Teacher('Renée', 100, 100, 'Skolhandläggare', 7, 60);
     renee.element.style.backgroundImage = "url(img/teacher2.png)";
     characters.push(renee);
   }
