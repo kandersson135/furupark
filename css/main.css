@@ -198,6 +198,7 @@ input, label, .teacher-select h2 {
 }
 
 /* GAME CONTROLS */
+/*
 #gameControls {
   position:absolute;
   left:100px;
@@ -226,6 +227,7 @@ input, label, .teacher-select h2 {
   bottom:100px;
   right:100px;
 }
+*/
 
 /* ANIMATE SHAKE */
 @keyframes shake {
