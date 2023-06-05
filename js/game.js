@@ -6,6 +6,7 @@ const moneyDisplay = document.getElementById('money-display');
 const livesDisplay = document.getElementById('lives-display');
 const speechBubble = document.getElementById('speech-bubble');
 const highScoresList = document.getElementById('highScoresList');
+const highScoresTitle = document.getElementById('highScoresTitle');
 const gameInfo = document.getElementById('game-info');
 const gameTitle = document.getElementById('game-title');
 const teacher = document.querySelector('.teacher');
@@ -317,6 +318,7 @@ startButton.addEventListener('click', () => {
     gameTitle.style.display = 'none';
     speechBubble.style.display = 'none';
     highScoresList.style.display = 'none';
+    highScoreTitle.style.display = 'none';
     gameContainer.style.display = 'block';
     createCharacters(selectedTeacher.value);
     activeTeacher = characters[0];

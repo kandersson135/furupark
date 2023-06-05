@@ -170,6 +170,17 @@ input, label, .teacher-select h2 {
   text-shadow: 1px 1px 0 #555;
 }
 
+#highScoreTitle {
+  color: #fff;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 18px;
+  text-shadow: 1px 1px 0 #555;
+  position: absolute;
+  top: 20px;
+  left: 40px;
+  animation: fadein 2s;
+}
+
 #highScoresList {
   list-style-type: none;
   position: absolute;
