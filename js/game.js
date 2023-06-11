@@ -273,7 +273,7 @@ document.addEventListener('keydown', (event) => {
   }
 });
 
-
+// iPad game controls
 let timerValue = 0
 let interval;
 
