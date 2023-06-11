@@ -273,7 +273,7 @@ document.addEventListener('keydown', (event) => {
   }
 });
 
-/*
+
 let timerValue = 0
 let interval;
 
@@ -331,7 +331,7 @@ actionButton.addEventListener('touchstart', () => {
   activeTeacher.useAbility();
 });
 
-*/
+
 
 /*
 // Key event listener
