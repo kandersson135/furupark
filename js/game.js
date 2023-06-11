@@ -386,8 +386,8 @@ startButton.addEventListener('click', () => {
     highScoresList.style.display = 'none';
     highScoreTitle.style.display = 'none';
     gameContainer.style.display = 'block';
-    //gameControls.style.display = 'block';
-    //actionButton.style.display = 'block';
+    gameControls.style.display = 'block';
+    actionButton.style.display = 'block';
     createCharacters(selectedTeacher.value);
     activeTeacher = characters[0];
     setInitialPositions();
@@ -486,8 +486,8 @@ function displayHighScores() {
 // Initialize the game
 function initGame() {
   teacherSelectScreen.style.display = 'block';
-  //gameControls.style.display = 'none';
-  //actionButton.style.display = 'none';
+  gameControls.style.display = 'none';
+  actionButton.style.display = 'none';
   displayHighScores();
 }
 
