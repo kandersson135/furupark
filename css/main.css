@@ -199,6 +199,7 @@ input, label, .teacher-select h2 {
 
 /* GAME CONTROLS */
 #gameControls {
+  visibility: hidden;
   position:absolute;
   left:100px;
   bottom: 150px;
@@ -219,6 +220,7 @@ input, label, .teacher-select h2 {
 #dDown {position:relative; top: 100px; left: -60px;}
 
 #actionButton {
+  visibility: hidden;
   text-decoration: none;
   padding:15px;
   border-radius: 5px;
@@ -240,4 +242,10 @@ input, label, .teacher-select h2 {
   80% { transform: translate(-1px, -1px) rotate(1deg); }
   90% { transform: translate(1px, 2px) rotate(0deg); }
   100% { transform: translate(1px, -2px) rotate(-1deg); }
+}
+
+/* iPad styles */
+@media only screen and (min-device-width: 768px) and (max-device-width: 1080px) and (orientation: landscape) {
+	#gameControls,
+  #actionButton {visibility: visible;}
 }
