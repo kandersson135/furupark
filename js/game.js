@@ -282,7 +282,7 @@ const pressUp = () => {
     timerValue++
     activeTeacher.moveUp();
     document.body.style.webkitUserSelect = "none";
-  }, 20)
+  }, 30)
 }
 
 const pressDown = () => {
@@ -290,7 +290,7 @@ const pressDown = () => {
     timerValue++
     activeTeacher.moveDown();
     document.body.style.webkitUserSelect = "none";
-  }, 20)
+  }, 30)
 }
 
 const pressRight = () => {
@@ -298,7 +298,7 @@ const pressRight = () => {
     timerValue++
     activeTeacher.moveRight();
     document.body.style.webkitUserSelect = "none";
-  }, 20)
+  }, 30)
 }
 
 const pressLeft = () => {
@@ -306,7 +306,7 @@ const pressLeft = () => {
     timerValue++
     activeTeacher.moveLeft();
     document.body.style.webkitUserSelect = "none";
-  }, 20)
+  }, 30)
 }
 
 const buttonRelease = () => {
