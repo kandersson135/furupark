@@ -331,44 +331,40 @@ actionButton.addEventListener('touchstart', () => {
   activeTeacher.useAbility();
 });
 
-
-
 // Gamepad API
-	function handleGamepadInput() {
-		var gamepads = navigator.getGamepads();
-		if (!gamepads) return;
+function handleGamepadInput() {
+	var gamepads = navigator.getGamepads();
+	if (!gamepads) return;
 
-		// Assuming one gamepad is connected
-		var gamepad = gamepads[0];
+	// Assuming one gamepad is connected
+	var gamepad = gamepads[0];
 
-		handleControllerInput(gamepad, 0);
+	handleControllerInput(gamepad, 0);
+}
+
+function handleControllerInput(controller, playerIndex) {
+	if (!controller) return;
+
+	// Example: A button for jump, left thumbstick for movement
+	if (controller.buttons[0].pressed) {
+		activeTeacher.useAbility();
 	}
 
-	function handleControllerInput(controller, playerIndex) {
-		if (!controller) return;
-
-		// Example: A button for jump, left thumbstick for movement
-		if (controller.buttons[0].pressed) {
-			activeTeacher.useAbility();
-		}
-
-		var stickThreshold = 0.5;
-		if (controller.axes[0] < -stickThreshold) {
-      activeTeacher.moveLeft();
-		} else if (controller.axes[0] > stickThreshold) {
-			activeTeacher.moveRight();
-		}
-
-    if (controller.axes[1] < -stickThreshold) {
-      activeTeacher.moveUp();
-    } else if (controller.axes[1] > stickThreshold) {
-      activeTeacher.moveDown();
-    }
+	var stickThreshold = 0.5;
+	if (controller.axes[0] < -stickThreshold) {
+    activeTeacher.moveLeft();
+	} else if (controller.axes[0] > stickThreshold) {
+		activeTeacher.moveRight();
 	}
 
-	setInterval(handleGamepadInput, 50);
+  if (controller.axes[1] < -stickThreshold) {
+    activeTeacher.moveUp();
+  } else if (controller.axes[1] > stickThreshold) {
+    activeTeacher.moveDown();
+  }
+}
 
-
+setInterval(handleGamepadInput, 50);
 
 /*
 // Key event listener
