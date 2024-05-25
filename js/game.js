@@ -208,7 +208,7 @@ function createCharacters(teacherType) {
     fredrik.element.style.backgroundImage = "url(img/teacher.png)";
     characters.push(fredrik);
   } else if (teacherType === 'renee') {
-    const renee = new Teacher('Renée', 100, 100, 'Skolhandläggare', 7, 10);
+    const renee = new Teacher('Renée', 100, 100, 'Skolhandläggare', 8, 10);
     renee.element.style.backgroundImage = "url(img/teacher2.png)";
     characters.push(renee);
   }
@@ -249,6 +249,7 @@ function updateLivesDisplay() {
 
 
 // Key event listener
+/*
 document.addEventListener('keydown', (event) => {
   if (activeTeacher) {
     const key = event.key;
@@ -272,6 +273,56 @@ document.addEventListener('keydown', (event) => {
     }
   }
 });
+*/
+
+// Set to keep track of pressed keys
+const pressedKeys = new Set();
+let lastUpdateTime = 0;
+const movementInterval = 40; // Movement update interval in milliseconds
+
+// Key down event listener
+document.addEventListener('keydown', (event) => {
+  if (activeTeacher) {
+    pressedKeys.add(event.key);
+    requestAnimationFrame(handleMovement);
+  }
+});
+
+// Key up event listener
+document.addEventListener('keyup', (event) => {
+  if (activeTeacher) {
+    pressedKeys.delete(event.key);
+  }
+});
+
+// Function to handle movement
+function handleMovement(currentTime) {
+  if (currentTime - lastUpdateTime >= movementInterval) {
+    if (pressedKeys.has('w')) {
+      activeTeacher.moveUp();
+    }
+    if (pressedKeys.has('s')) {
+      activeTeacher.moveDown();
+    }
+    if (pressedKeys.has('a')) {
+      activeTeacher.moveLeft();
+    }
+    if (pressedKeys.has('d')) {
+      activeTeacher.moveRight();
+    }
+    if (pressedKeys.has('Enter')) {
+      activeTeacher.useAbility();
+    }
+    lastUpdateTime = currentTime;
+  }
+
+  // Continue to call handleMovement if any keys are still pressed
+  if (pressedKeys.size > 0) {
+    requestAnimationFrame(handleMovement);
+  }
+}
+
+
 
 // iPad game controls
 let timerValue = 0
